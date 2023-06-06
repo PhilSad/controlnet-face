@@ -1,13 +1,4 @@
-# controlnet-face
-
-```bash
-pip install git+https://github.com/huggingface/diffusers.git transformers accelerate xformers==0.0.16 
-pip install bitsandbytes wandb
-wandb login
-
-
-
-!accelerate launch train_controlnet.py \
+accelerate launch train_controlnet.py \
  --pretrained_model_name_or_path="stabilityai/stable-diffusion-2-1-base" \
  --output_dir="model_out" \
  --dataset_name=PhilSad/Control-Face-data \
@@ -24,10 +15,8 @@ wandb login
  --checkpointing_steps=5000 \
  --validation_steps=5000 \
  --report_to wandb \
- --push_to_hub
+ --push_to_hub \
  --train_batch_size=1 \
  --gradient_accumulation_steps=4 \
  --gradient_checkpointing \
  --use_8bit_adam
-
-```
